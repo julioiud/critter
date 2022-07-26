@@ -36,6 +36,7 @@ public class UserServiceImpl implements IUserService {
         this.employeeRepository = employeeRepository;
     }
 
+    @Transactional
     @Override
     public Customer createCustomer(Customer customer) {
         return customerRepository.save(customer);
@@ -50,7 +51,6 @@ public class UserServiceImpl implements IUserService {
         return customers;
     }
 
-    @Transactional
     @Override
     public Customer getCustomerByPetId(Long petId) {
         Optional<Pet> petOpt = petRepository.findById(petId);
@@ -64,6 +64,7 @@ public class UserServiceImpl implements IUserService {
         return customers.get(0);
     }
 
+    @Transactional
     @Override
     public Employee createEmployee(Employee employee) {
         return employeeRepository.save(employee);
@@ -85,6 +86,7 @@ public class UserServiceImpl implements IUserService {
         employeeDB.setAvailables(availables);
         employeeRepository.save(employeeDB);
     }
+
 
     @Override
     public List<Employee> checkAvailability(EmployeeRequestDTO employeeDTO) {

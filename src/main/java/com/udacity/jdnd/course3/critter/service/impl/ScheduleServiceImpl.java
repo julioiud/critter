@@ -15,6 +15,7 @@ import com.udacity.jdnd.course3.critter.user.Customer;
 import com.udacity.jdnd.course3.critter.user.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collections;
 import java.util.List;
@@ -41,6 +42,7 @@ public class ScheduleServiceImpl implements IScheduleService {
         this.customerRepository = customerRepository;
     }
 
+    @Transactional
     @Override
     public Schedule createSchedule(ScheduleDTO scheduleDTO) {
         Schedule schedule = new Schedule();

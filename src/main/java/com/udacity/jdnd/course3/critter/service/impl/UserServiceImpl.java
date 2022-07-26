@@ -45,8 +45,13 @@ public class UserServiceImpl implements IUserService {
     @Override
     public List<Customer> getAllCustomers() {
         List<Customer> customers = customerRepository.findAll();
+        // for unit tests
         customers.stream().forEach(c -> {
             List<Pet> pets = c.getPets();
+            if(pets == null){
+                pets = petRepository.findByCustomerId(c.getId());
+                c.setPets(pets);
+            }
         });
         return customers;
     }

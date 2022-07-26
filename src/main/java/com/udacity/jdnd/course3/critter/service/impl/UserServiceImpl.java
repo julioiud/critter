@@ -20,6 +20,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
+@Transactional
 public class UserServiceImpl implements IUserService {
 
     private final CustomerRepository customerRepository;
@@ -36,7 +37,7 @@ public class UserServiceImpl implements IUserService {
         this.employeeRepository = employeeRepository;
     }
 
-    @Transactional
+
     @Override
     public Customer createCustomer(Customer customer) {
         return customerRepository.save(customer);
@@ -69,7 +70,6 @@ public class UserServiceImpl implements IUserService {
         return customers.get(0);
     }
 
-    @Transactional
     @Override
     public Employee createEmployee(Employee employee) {
         return employeeRepository.save(employee);
@@ -80,7 +80,6 @@ public class UserServiceImpl implements IUserService {
         return employeeRepository.findById(id).orElse(null);
     }
 
-    @Transactional
     @Override
     public void addEmployeSchedule(Set<DayOfWeek> availables, Long employeeID) {
         Optional<Employee> employeeDBOpt = employeeRepository.findById(employeeID);

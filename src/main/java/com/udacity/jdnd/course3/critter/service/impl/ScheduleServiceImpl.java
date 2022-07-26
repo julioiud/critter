@@ -23,6 +23,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
+@Transactional
 public class ScheduleServiceImpl implements IScheduleService {
 
     private final ScheduleRepository scheduleRepository;
@@ -42,7 +43,7 @@ public class ScheduleServiceImpl implements IScheduleService {
         this.customerRepository = customerRepository;
     }
 
-    @Transactional
+
     @Override
     public Schedule createSchedule(ScheduleDTO scheduleDTO) {
         Schedule schedule = new Schedule();

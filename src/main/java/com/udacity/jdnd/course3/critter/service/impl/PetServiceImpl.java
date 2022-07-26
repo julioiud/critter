@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class PetServiceImpl implements IPetService {
 
     private final PetRepository petRepository;
@@ -31,7 +32,6 @@ public class PetServiceImpl implements IPetService {
         this.userUtil = userUtil;
     }
 
-    @Transactional
     @Override
     public Pet createPet(PetDTO petDTO) {
         Optional<Customer> customerDB = customerRepository.findById(petDTO.getOwnerId());

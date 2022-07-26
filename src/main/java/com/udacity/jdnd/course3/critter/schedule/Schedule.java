@@ -2,10 +2,12 @@ package com.udacity.jdnd.course3.critter.schedule;
 
 import com.udacity.jdnd.course3.critter.pet.Pet;
 import com.udacity.jdnd.course3.critter.user.Employee;
+import com.udacity.jdnd.course3.critter.user.EmployeeSkill;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "schedules")
@@ -31,6 +33,10 @@ public class Schedule {
             inverseJoinColumns = { @JoinColumn(name = "schedules_id")}
     )
     private List<Pet> pets;
+
+    @ElementCollection
+    @Enumerated(EnumType.STRING)
+    private Set<EmployeeSkill> activities;
 
     public Long getId() {
         return id;
@@ -62,5 +68,13 @@ public class Schedule {
 
     public void setPets(List<Pet> pets) {
         this.pets = pets;
+    }
+
+    public Set<EmployeeSkill> getActivities() {
+        return activities;
+    }
+
+    public void setActivities(Set<EmployeeSkill> activities) {
+        this.activities = activities;
     }
 }

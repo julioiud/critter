@@ -95,8 +95,6 @@ public class UserUtil {
 
         List<Long> petIds = new ArrayList<>();
         List<Long> employeeIds = new ArrayList<>();
-        Set<EmployeeSkill> activities =  new HashSet<>();
-
         if(schedule.getPets() != null){
             petIds = schedule.getPets()
                     .stream().map(p -> {
@@ -111,19 +109,12 @@ public class UserUtil {
                         return e.getId();
                     })
                     .collect(Collectors.toList());
-
-           schedule.getEmployees()
-                      .stream().forEach(e -> {
-                         e.getSkills().stream().forEach(s -> {
-                            activities.add(s);
-                         });
-                      });
         }
         scheduleDTO.setId(schedule.getId());
         scheduleDTO.setDate(schedule.getDate());
         scheduleDTO.setPetIds(petIds);
         scheduleDTO.setEmployeeIds(employeeIds);
-        scheduleDTO.setActivities(activities);
+        scheduleDTO.setActivities(schedule.getActivities());
 
         return scheduleDTO;
     }

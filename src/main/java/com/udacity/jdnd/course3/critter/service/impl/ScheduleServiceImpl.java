@@ -72,6 +72,7 @@ public class ScheduleServiceImpl implements IScheduleService {
         schedule.setEmployees(employees);
         schedule.setPets(pets);
         schedule.setDate(scheduleDTO.getDate());
+        schedule.setActivities(scheduleDTO.getActivities());
 
         return scheduleRepository.save(schedule);
     }

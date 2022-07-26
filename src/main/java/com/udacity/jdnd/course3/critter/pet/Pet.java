@@ -32,14 +32,7 @@ public class Pet {
 
     @ManyToMany(mappedBy = "pets",
             fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL/*,
-            cascade =
-                    {
-                            CascadeType.DETACH,
-                            CascadeType.MERGE,
-                            CascadeType.REFRESH,
-                            CascadeType.PERSIST
-                    }*/)
+            cascade = CascadeType.ALL)
     private List<Schedule> schedules;
 
     public long getId() {

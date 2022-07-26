@@ -14,7 +14,7 @@ import java.util.List;
 @RequestMapping("/pet")
 public class PetController {
 
-    private IPetService petService;
+    private final IPetService petService;
     private final UserUtil userUtil;
 
     @Autowired

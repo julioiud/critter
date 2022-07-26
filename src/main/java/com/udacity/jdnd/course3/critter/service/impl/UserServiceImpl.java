@@ -98,12 +98,9 @@ public class UserServiceImpl implements IUserService {
             return employees;
         }
 
-        List<Employee> employeesResult =
-                employees.stream()
+        return employees.stream()
                 .filter(e -> containAll(e.getSkills(), skills))
                 .collect(Collectors.toList());
-
-        return employeesResult;
     }
 
     public static boolean containAll(Set<EmployeeSkill> big, Set<EmployeeSkill> small) {
